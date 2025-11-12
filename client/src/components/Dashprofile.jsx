@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import Deleteuserpop from "./Deleteuserpop";
 import useSignout from "../hooks/useSignout.js";
+import { Link } from "react-router-dom";
 
 const Dashprofile = () => {
   const { user, setUser } = useUserStore();
@@ -91,8 +92,17 @@ const Dashprofile = () => {
           >
             {isSubmitting ? "Updating..." : "Update Profile"}
           </button>
+
+          {/*Create Post Button */}
+          <Link to="/create-post">
+          <button
+            type="submit"
+            className="text-[var(--text-colour)] p-2 rounded border border-[var(--border-colour)] transition w-full hover:border-2"
+            >
+            Create Post
+          </button>
+          </Link>
         </div>
-          
         {/* Delete / Sign Out */}
         <div className="flex flex-col sm:flex-row justify-between items-center w-full text-sm font-semibold text-red-500 mt-4 gap-2 sm:gap-0">
           <span onClick={() => setIsDeletePopOpen(true)} className="cursor-pointer hover:text-red-600 transition-colors">

@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import useThemeStore from "./store/themeStore";
 import { Toaster } from 'react-hot-toast'
 import Protectedroute from "./components/Protectedroute";
+import Adminroutes from "./components/Adminroutes";
+import Createpost from "./components/Createpost";
 
 const App = () => {
   const { isDarkMode } = useThemeStore();
@@ -26,6 +28,9 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route element={<Protectedroute />}>
               <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route element={<Adminroutes />}>
+              <Route path="/create-post" element={<Createpost />} />
             </Route>
           </Routes>
         <Footer />

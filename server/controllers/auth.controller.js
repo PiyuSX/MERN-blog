@@ -49,7 +49,7 @@ export const signin = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: validUser._id, isAdmin: validUser.isAdmin }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
@@ -108,7 +108,7 @@ export const googleAuth = async (req, res) => {
       await User.create(newUser);
       //We can directly use Given details here but for better practice we will fetch from DB //Piyush
       const createdUser = await User.findOne({ email });
-      const token = jwt.sign({ id: createdUser._id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ id: createdUser._id, isAdmin: createdUser.isAdmin }, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });
       const { password, ...userData } = createdUser.toObject();

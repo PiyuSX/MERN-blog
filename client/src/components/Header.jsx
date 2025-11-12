@@ -76,7 +76,7 @@ const Header = () => {
                 onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
                 className="w-9 rounded-full overflow-hidden cursor-pointer"
               >
-                <img src={user.imgURL} alt="" />
+                <img src={`${user.imgURL}`} alt={user.name} />
               </div>
             ) : (
               <Link
